@@ -8,7 +8,7 @@ const config = {
   trailingComma: "es5",
   arrowParens: "avoid",
 
-  plugin: ['prettier-plugin-tailwindcss'],
+  plugin: ["prettier-plugin-tailwindcss"],
 };
 
 export default config;
