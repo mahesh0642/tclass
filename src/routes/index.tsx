@@ -79,9 +79,9 @@ function Home() {
     <div className="p-8">
       <h1 className="text-3xl font-bold md:text-4xl">React MasterClass</h1>
       <p className="mt-2 text-sm text-gray-500">
-        A practical learning experience from Akash, aka Your Next Tech Partner (
+        A practical learning experience from Mahesh, full stack devloper, Silent Whisper, Super-Coder (
         <a
-          href="https://yntp.me"
+          href="https://my-web-portfolio-mahesh.vercel.app/"
           target="_blank"
           rel="noopener noreferrer"
           className="underline"
