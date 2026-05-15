@@ -1,10 +1,14 @@
-import {Link, createFileRoute} from "@tanstack/react-router";
+import { Link, createFileRoute } from "@tanstack/react-router";
 import {
+  Boxes,
   Rocket,
-
+  MousePointerClick,
+  Database,
+  Gauge,
+  Route as RouteIcon,
 } from "lucide-react";
 
-import {Card, CardContent} from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -27,6 +31,7 @@ const modules = [
     description:
       "Learn how large applications scale across teams, systems, and infrastructure.",
     href: "https://link.excalidraw.com/readonly/2048B6UWNCZcG5R5Xbja?darkMode=true",
+    icon: Boxes,
     accent:
       "border-indigo-200 bg-indigo-50 hover:border-indigo-300 hover:bg-indigo-100",
     badge: "System Design",
@@ -37,6 +42,7 @@ const modules = [
     description:
       "Learn event handling, state updates, conditional rendering, and dynamic UI patterns.",
     to: "/interactivity",
+    icon: MousePointerClick,
     accent:
       "border-emerald-200 bg-emerald-50 hover:border-emerald-300 hover:bg-emerald-100",
     badge: "UI Logic",
@@ -46,7 +52,7 @@ const modules = [
     description:
       "Explore local state, derived state, lifting state up, and predictable data flow.",
     to: "/state",
- 
+    icon: Database,
     accent:
       "border-amber-200 bg-amber-50 hover:border-amber-300 hover:bg-amber-100",
     badge: "State Management",
@@ -56,7 +62,7 @@ const modules = [
     description:
       "Understand rendering, memoization, Suspense, and optimization bottlenecks.",
     to: "/performance",
-   
+    icon: Gauge,
     accent:
       "border-rose-200 bg-rose-50 hover:border-rose-300 hover:bg-rose-100",
     badge: "Advanced",
@@ -66,7 +72,7 @@ const modules = [
     description:
       "Build multi-page React applications using modern file-based routing patterns.",
     href: "https://chaicode.com/reviews?tag=webdev",
-    
+    icon: RouteIcon,
     accent:
       "border-violet-200 bg-violet-50 hover:border-violet-300 hover:bg-violet-100",
     badge: "Architecture",
@@ -77,9 +83,13 @@ const modules = [
 function Home() {
   return (
     <div className="p-8">
-      <h1 className="text-3xl font-bold md:text-4xl">React MasterClass</h1>
+      <h1 className="text-3xl font-bold md:text-4xl">
+        React MasterClass
+      </h1>
+
       <p className="mt-2 text-sm text-gray-500">
-        A practical learning experience from Mahesh, full stack devloper, Silent Whisper, Super-Coder (
+        A practical learning experience from Mahesh, full stack developer,
+        Silent Whisper, Super-Coder (
         <a
           href="https://my-web-portfolio-mahesh.vercel.app/"
           target="_blank"
@@ -93,21 +103,21 @@ function Home() {
 
       {/* Bento Grid */}
       <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-3 xl:grid-cols-4">
-        {modules.map(module => {
+        {modules.map((module) => {
           const Icon = module.icon;
 
           const content = (
             <Card
               className={`group h-full cursor-pointer border transition-all duration-200 hover:-translate-y-1 hover:shadow-lg ${module.accent}`}
             >
-              <CardContent className="flex h-full flex-col justify-between px-6">
+              <CardContent className="flex h-full flex-col justify-between px-6 py-6">
                 <div>
                   <div className="mb-4 flex items-end justify-between">
-                    <div className="rounded-xl border border-white/70 bg-white/80 p-1.5 shadow-sm backdrop-blur">
-                     
+                    <div className="rounded-xl border border-white/70 bg-white/80 p-2 shadow-sm backdrop-blur">
+                      <Icon className="size-5 text-gray-700" />
                     </div>
 
-                    <span className="rounded-full border border-white/60 bg-white/70 px-2.5 py-1 font-mono text-[10px] tracking-wide text-gray-500 uppercase">
+                    <span className="rounded-full border border-white/60 bg-white/70 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wide text-gray-500">
                       {module.badge}
                     </span>
                   </div>
@@ -149,7 +159,11 @@ function Home() {
           }
 
           return (
-            <Link key={module.title} to={module.to} className="block">
+            <Link
+              key={module.title}
+              to={module.to!}
+              className="block"
+            >
               {content}
             </Link>
           );
@@ -158,3 +172,5 @@ function Home() {
     </div>
   );
 }
+
+export default Home;
